@@ -1,14 +1,14 @@
 import type { NextAuthOptions } from 'next-auth';
 import Google from 'next-auth/providers/google';
 import NeonAdapter from '@auth/neon-adapter';
-import { Pool } from '@neondatabase/serverless';
+
+import { getPool } from './lib/db';
 import { ensureAuthTables } from './lib/ensure-auth-tables';
+import { ensureProfileForUser, getProfileByUserId } from './lib/profiles';
 
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
-});
+const pool = getPool();
 
-await ensureAuthTables(pool);
+await ensureAuthTables();
 
 export const authConfig: NextAuthOptions = {
   adapter: NeonAdapter(pool),
@@ -22,4 +22,24 @@ export const authConfig: NextAuthOptions = {
     strategy: 'database',
   },
   secret: process.env.AUTH_SECRET,
+  events: {
+    async createUser({ user }) {
+      await ensureProfileForUser(user);
+    },
+    async signIn({ user }) {
+      await ensureProfileForUser(user);
+    },
+  },
+  callbacks: {
+    async session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
+        const profile = await getProfileByUserId(user.id);
+        if (profile) {
+          session.user.role = profile.role;
+        }
+      }
+      return session;
+    },
+  },
 };

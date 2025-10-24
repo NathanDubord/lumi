@@ -1,19 +1,28 @@
 import { auth } from '@/auth';
+import { createClientInviteAction } from '@/app/_actions/create-client-invite';
 import { SignInButton } from '@/components/sign-in-button';
 import { SignOutButton } from '@/components/sign-out-button';
+import { InviteClientForm } from '@/components/invite-client-form';
+import { listClientInvites } from '@/lib/profiles';
 import styles from './page.module.css';
 
 export default async function Page() {
   const session = await auth();
   const currentYear = new Date().getFullYear();
-  const isAuthenticated = Boolean(session?.user);
+  const user = session?.user;
+  const isAuthenticated = Boolean(user);
+  const role = user?.role ?? null;
+  const isTrainer = isAuthenticated && role !== 'client';
+  const isClient = role === 'client';
+
+  const invites = isTrainer && user?.id ? await listClientInvites(user.id) : [];
 
   return (
     <div className={styles.page}>
       <header className={styles.nav}>
         <div className={`${styles.container} ${styles.navInner}`}>
           <span className={styles.logo}>lumi</span>
-          {isAuthenticated ? (
+          {isTrainer ? (
             <nav className={styles.navLinks} aria-label="Primary">
               <a href="#overview">Overview</a>
               <a href="#clients">Clients</a>
@@ -27,10 +36,17 @@ export default async function Page() {
             </nav>
           )}
           <div className={styles.authControls}>
-            {isAuthenticated && session?.user ? (
+            {isTrainer && user ? (
               <>
                 <span className={styles.userName}>
-                  {session.user.name ?? session.user.email ?? 'Signed in'}
+                  {user.name ?? user.email ?? 'Signed in'}
+                </span>
+                <SignOutButton className={styles.signOutButton} />
+              </>
+            ) : isClient && user ? (
+              <>
+                <span className={styles.userName}>
+                  {user.name ?? user.email ?? 'Signed in'}
                 </span>
                 <SignOutButton className={styles.signOutButton} />
               </>
@@ -42,11 +58,11 @@ export default async function Page() {
       </header>
 
       <main className={styles.main}>
-        {isAuthenticated && session?.user ? (
+        {isTrainer && user ? (
           <div className={`${styles.container} ${styles.dashboard}`}>
             <section id="overview" className={styles.dashboardHero}>
               <div>
-                <h1>Welcome back{session.user?.name ? `, ${session.user.name}` : ''}!</h1>
+                <h1>Welcome back{user.name ? `, ${user.name}` : ''}!</h1>
                 <p>Here&apos;s a quick look at what&apos;s happening with your clients today.</p>
               </div>
               <div className={styles.dashboardActions}>
@@ -131,6 +147,90 @@ export default async function Page() {
                   </li>
                 </ul>
               </article>
+            </section>
+
+            <section className={styles.inviteSection}>
+              <div className={styles.inviteHeader}>
+                <div>
+                  <h2>Invite a client</h2>
+                  <p>Send an invite so clients can sign in with Google and track their plan.</p>
+                </div>
+              </div>
+              <InviteClientForm action={createClientInviteAction} className={styles.inviteForm} />
+
+              <div className={styles.inviteListWrapper}>
+                <h3>Recent invites</h3>
+                {invites.length === 0 ? (
+                  <p className={styles.inviteEmpty}>No invites yet. Start by adding your first client.</p>
+                ) : (
+                  <ul className={styles.inviteList}>
+                    {invites.map((invite) => (
+                      <li key={invite.id}>
+                        <div>
+                          <strong>{invite.name ?? invite.email}</strong>
+                          <span>{invite.email}</span>
+                        </div>
+                        <span
+                          className={`${styles.inviteStatus} ${
+                            invite.status === 'accepted' ? styles.inviteStatusAccepted : styles.inviteStatusPending
+                          }`}
+                        >
+                          {invite.status === 'accepted' ? 'Accepted' : 'Pending'}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </section>
+          </div>
+        ) : isClient && user ? (
+          <div className={`${styles.container} ${styles.clientDashboard}`}>
+            <section className={styles.clientHero}>
+              <div>
+                <h1>Hi {user.name ?? 'there'}! 👋</h1>
+                <p>Your trainer keeps this space updated so you can follow progress and next steps in one place.</p>
+              </div>
+            </section>
+
+            <section className={styles.clientGrid}>
+              <article className={styles.clientCard}>
+                <h2>Next session</h2>
+                <p className={styles.clientDate}>Monday, 3:00 PM</p>
+                <p>Agility circuit with Rex. Bring treats and a long lead.</p>
+                <button type="button" className={styles.secondaryCta}>
+                  Confirm attendance
+                </button>
+              </article>
+
+              <article className={styles.clientCard}>
+                <h2>Training focus</h2>
+                <ul className={styles.clientList}>
+                  <li>
+                    <strong>Impulse control</strong>
+                    <span>Practice “leave it” during walks twice per day.</span>
+                  </li>
+                  <li>
+                    <strong>Loose leash</strong>
+                    <span>Repetition of structured heel for 10 minutes.</span>
+                  </li>
+                  <li>
+                    <strong>Home update</strong>
+                    <span>Share progress videos before Thursday.</span>
+                  </li>
+                </ul>
+              </article>
+            </section>
+
+            <section className={styles.clientCardWide}>
+              <h2>Recent notes</h2>
+              <p>
+                “Rex handled the agility sequence with much more confidence today—keep reinforcing the calm sit before
+                each run. We’ll introduce weave poles next session.”
+              </p>
+              <button type="button" className={styles.primaryCta}>
+                Message trainer
+              </button>
             </section>
           </div>
         ) : (

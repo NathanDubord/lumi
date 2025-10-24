@@ -246,10 +246,164 @@
   transform: translateY(-1px);
 }
 
+.inviteSection {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1.75rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.02) 100%);
+}
+
+.inviteForm {
+  width: 100%;
+}
+
+.inviteHeader h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.inviteHeader p {
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 0.95rem;
+}
+
+.inviteListWrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+.inviteListWrapper h3 {
+  font-size: 1.1rem;
+}
+
+.inviteEmpty {
+  color: rgba(15, 23, 42, 0.55);
+  font-size: 0.95rem;
+}
+
+.inviteList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.inviteList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.95rem 1.15rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.inviteList li strong {
+  display: block;
+}
+
+.inviteList li span {
+  display: block;
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 0.9rem;
+}
+
+.inviteStatus {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+.inviteStatusPending {
+  background: rgba(251, 191, 36, 0.15);
+  color: rgba(180, 83, 9, 0.9);
+}
+
+.inviteStatusAccepted {
+  background: rgba(34, 197, 94, 0.18);
+  color: rgba(22, 101, 52, 0.9);
+}
+
 .mainInner {
   display: flex;
   flex-direction: column;
   gap: 5rem;
+}
+
+.clientDashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.clientHero {
+  padding: 2.25rem;
+  border-radius: 1.75rem;
+  background: linear-gradient(135deg, rgba(103, 232, 249, 0.2) 0%, rgba(59, 130, 246, 0.15) 100%);
+  color: #0f172a;
+}
+
+.clientHero h1 {
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  margin-bottom: 0.75rem;
+}
+
+.clientHero p {
+  max-width: 540px;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.clientGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.clientCard {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 1rem;
+}
+
+.clientDate {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.clientList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.clientList li strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.clientList li span {
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 0.95rem;
+}
+
+.clientCardWide {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 1.25rem;
 }
 
 .hero {
@@ -473,6 +627,14 @@
   .dashboardPanels {
     grid-template-columns: 1fr;
   }
+
+  .inviteSection {
+    padding: 1.75rem;
+  }
+
+  .clientGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
@@ -485,6 +647,10 @@
   }
 
   .dashboardHero {
+    padding: 1.75rem;
+  }
+
+  .clientHero {
     padding: 1.75rem;
   }
 
