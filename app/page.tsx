@@ -27,7 +27,7 @@ export default async function Page() {
             </nav>
           )}
           <div className={styles.authControls}>
-            {isAuthenticated ? (
+            {isAuthenticated && session?.user ? (
               <>
                 <span className={styles.userName}>
                   {session.user.name ?? session.user.email ?? 'Signed in'}
@@ -42,7 +42,7 @@ export default async function Page() {
       </header>
 
       <main className={styles.main}>
-        {isAuthenticated ? (
+        {isAuthenticated && session?.user ? (
           <div className={`${styles.container} ${styles.dashboard}`}>
             <section id="overview" className={styles.dashboardHero}>
               <div>
