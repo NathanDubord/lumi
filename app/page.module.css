@@ -1,0 +1,498 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #fafdff 0%, #f2f5ff 45%, #ffffff 100%);
+  color: #0f172a;
+}
+
+.container {
+  width: min(100%, 1170px);
+  margin: 0 auto;
+  padding: 0 3rem;
+  box-sizing: border-box;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.navLinks a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.navLinks a:hover,
+.navLinks a:focus-visible {
+  color: #2563eb;
+}
+
+.authControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userName {
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.signInButton,
+.signOutButton {
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.signInButton:hover,
+.signInButton:focus-visible,
+.signOutButton:hover,
+.signOutButton:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+.signOutButton {
+  background: transparent;
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.45);
+}
+
+.main {
+  flex: 1;
+  padding: 3.5rem 0 4rem;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.dashboardHero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  border-radius: 1.75rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.03) 100%);
+}
+
+.dashboardHero h1 {
+  font-size: clamp(2.1rem, 3vw, 2.75rem);
+  margin-bottom: 0.75rem;
+}
+
+.dashboardHero p {
+  max-width: 520px;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.dashboardActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.metricCard {
+  padding: 1.75rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.metricValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.metricSubtext {
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.dashboardPanels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.scheduleCard,
+.clientsCard {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.scheduleCard h2,
+.clientsCard h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.scheduleList,
+.clientsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.scheduleList li,
+.clientsList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.scheduleList li:last-child,
+.clientsList li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.scheduleList li strong,
+.clientsList li strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.scheduleList li span,
+.clientsList li span {
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 0.95rem;
+}
+
+.scheduleList time {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.clientsList button {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.clientsList button:hover,
+.clientsList button:focus-visible {
+  background: rgba(37, 99, 235, 0.18);
+  transform: translateY(-1px);
+}
+
+.mainInner {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+}
+
+.heroText {
+  flex: 1 1 320px;
+  max-width: 520px;
+}
+
+.heroText h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.heroText p {
+  font-size: 1.1rem;
+  color: rgba(15, 23, 42, 0.72);
+  margin-bottom: 2rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.primaryCta {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+.primaryCta:hover,
+.primaryCta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px rgba(37, 99, 235, 0.3);
+}
+
+.secondaryCta {
+  background: transparent;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: #2563eb;
+}
+
+.secondaryCta:hover,
+.secondaryCta:focus-visible {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.heroCard {
+  flex: 1 1 280px;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(160deg, #ffffff 0%, #f6f8ff 100%);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.09);
+}
+
+.heroCard h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.heroCard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.heroCard li {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(37, 99, 235, 0.06);
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.heroCard strong {
+  color: #2563eb;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.features h2 {
+  font-size: 2rem;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.featureGrid article {
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+}
+
+.featureGrid h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.featureGrid p {
+  color: rgba(15, 23, 42, 0.72);
+  line-height: 1.5;
+}
+
+.benefits {
+  padding: 2.5rem;
+  border-radius: 1.75rem;
+  background: linear-gradient(140deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.02) 100%);
+  color: rgba(15, 23, 42, 0.82);
+  text-align: center;
+}
+
+.benefits h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.benefits p {
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 1.75rem;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.cta h2 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: rgba(226, 232, 240, 0.92);
+}
+
+.cta .primaryCta {
+  color: #0f172a;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.footer {
+  padding: 2rem 0 3rem;
+  color: rgba(15, 23, 42, 0.55);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footerInner {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .nav {
+    padding: 1.25rem 0;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .main {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .mainInner {
+    gap: 4rem;
+  }
+
+  .hero {
+    gap: 2.5rem;
+  }
+
+  .dashboardHero {
+    padding: 2rem;
+  }
+
+  .dashboardPanels {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroText h1 {
+    font-size: clamp(2.25rem, 8vw, 2.75rem);
+  }
+
+  .dashboardActions {
+    justify-content: flex-start;
+  }
+
+  .dashboardHero {
+    padding: 1.75rem;
+  }
+
+  .heroCard {
+    padding: 1.5rem;
+  }
+
+  .cta {
+    padding: 2.5rem 1.5rem;
+  }
+}
