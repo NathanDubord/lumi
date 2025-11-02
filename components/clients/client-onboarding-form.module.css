@@ -1,0 +1,104 @@
+.card {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.intro {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.intro h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.intro p {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.65);
+  font-size: 0.95rem;
+}
+
+.form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.fields {
+  display: grid;
+  gap: 1rem;
+}
+
+.inputGroup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.inputGroup input:focus-visible,
+.inputGroup textarea:focus-visible {
+  outline: none;
+  border-color: rgba(37, 99, 235, 0.7);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 35px rgba(37, 99, 235, 0.25);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}
+
+.submit:not(:disabled):hover,
+.submit:not(:disabled):focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 24px 45px rgba(37, 99, 235, 0.3);
+}
+
+.message {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.error {
+  color: #b91c1c;
+}
+
+.success {
+  color: #1f8b4c;
+}

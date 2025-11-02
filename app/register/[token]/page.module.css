@@ -1,0 +1,42 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(180deg, #fafdff 0%, #f2f5ff 45%, #ffffff 100%);
+  color: #0f172a;
+}
+
+.messageCard {
+  width: min(480px, 100%);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.12);
+  display: grid;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.messageCard h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.messageCard p {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 1rem;
+}
+
+.messageCard a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.messageCard a:hover,
+.messageCard a:focus-visible {
+  text-decoration: underline;
+}

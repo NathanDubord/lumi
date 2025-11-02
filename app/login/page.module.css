@@ -1,0 +1,9 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(180deg, #fafdff 0%, #f2f5ff 45%, #ffffff 100%);
+  color: #0f172a;
+}

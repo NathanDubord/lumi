@@ -56,6 +56,11 @@
   color: #2563eb;
 }
 
+.navLinks a[aria-current='page'] {
+  color: #2563eb;
+  font-weight: 600;
+}
+
 .authControls {
   display: flex;
   align-items: center;
@@ -78,6 +83,7 @@
   font-size: 0.95rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .signInButton:hover,
@@ -371,6 +377,40 @@
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
   display: grid;
   gap: 1rem;
+}
+
+.clientCard dl {
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.clientCard dl > div {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.clientCard dt {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(15, 23, 42, 0.55);
+  margin-bottom: 0.25rem;
+}
+
+.clientCard dd {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.clientAddress {
+  white-space: pre-wrap;
+}
+
+.clientManageLink {
+  margin-top: 1rem;
+  display: inline-flex;
 }
 
 .clientDate {

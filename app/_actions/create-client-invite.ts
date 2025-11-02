@@ -26,6 +26,7 @@ export async function createClientInviteAction(formData: FormData) {
 
   if (result.success) {
     revalidatePath('/');
+    revalidatePath('/clients');
   }
 
   return result;

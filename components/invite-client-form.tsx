@@ -73,7 +73,7 @@ export function InviteClientForm({ action, className }: InviteClientFormProps) {
         <p className={`${styles.message} ${styles.error}`}>{state.error}</p>
       ) : state.success ? (
         <p className={`${styles.message} ${styles.success}`}>
-          Invite sent! Your client can now sign in with Google.
+          Invite sent! Your client will receive an email with their registration link.
         </p>
       ) : null}
     </form>

@@ -1,0 +1,212 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+}
+
+.description {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.65);
+  max-width: 520px;
+  font-size: 1rem;
+}
+
+.invitePanel {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(130deg, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.04) 100%);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.invitePanel h2 {
+  margin-bottom: 0.4rem;
+}
+
+.invitePanel p {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 0.95rem;
+}
+
+.tableCard {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tableHeader h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.table thead th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(15, 23, 42, 0.6);
+  padding-bottom: 0.75rem;
+}
+
+.table tbody td {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.phoneCell {
+  white-space: nowrap;
+}
+
+.addressCell {
+  max-width: 220px;
+  white-space: pre-wrap;
+}
+
+.actionCell {
+  text-align: right;
+}
+
+.actionForm {
+  display: inline-flex;
+}
+
+.removeButton {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.removeButton:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.removeButton:not(:disabled):hover,
+.removeButton:not(:disabled):focus-visible {
+  background: rgba(248, 113, 113, 0.2);
+  transform: translateY(-1px);
+}
+
+.table tbody td:first-child,
+.table thead th:first-child {
+  padding-left: 0;
+}
+
+.table tbody td:last-child,
+.table thead th:last-child {
+  padding-right: 0;
+}
+
+.clientName {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.clientEmail {
+  color: rgba(15, 23, 42, 0.65);
+}
+
+.emptyMessage {
+  margin: 0;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  border: 1px dashed rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.05);
+  color: rgba(15, 23, 42, 0.7);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .invitePanel,
+  .tableCard {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .table {
+    min-width: unset;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: grid;
+    gap: 0.65rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  .table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .table tbody td {
+    border: none;
+    padding: 0;
+    font-size: 0.95rem;
+  }
+
+  .actionCell {
+    text-align: left;
+  }
+
+  .actionForm {
+    justify-content: flex-start;
+  }
+
+  .table tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(15, 23, 42, 0.55);
+    margin-bottom: 0.25rem;
+  }
+}

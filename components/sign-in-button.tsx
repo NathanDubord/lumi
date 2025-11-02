@@ -1,6 +1,4 @@
-'use client';
-
-import { signIn } from 'next-auth/react';
+import Link from 'next/link';
 
 type SignInButtonProps = {
   className?: string;
@@ -8,8 +6,8 @@ type SignInButtonProps = {
 
 export function SignInButton({ className }: SignInButtonProps) {
   return (
-    <button type="button" className={className} onClick={() => signIn('google')}>
+    <Link href="/login" className={className}>
       Sign in
-    </button>
+    </Link>
   );
 }

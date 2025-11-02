@@ -12,3 +12,10 @@ declare module 'next-auth' {
     role?: 'trainer' | 'client';
   }
 }
+
+declare module 'next-auth/jwt' {
+  interface JWT {
+    id?: string;
+    role?: 'trainer' | 'client';
+  }
+}
